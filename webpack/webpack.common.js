@@ -55,12 +55,20 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|jpg|jpeg|gif)$/i,
+        test: /\.(png|jpg|jpeg|gif|svg)$/i,
         type: 'asset/resource',
+        resourceQuery: { not: /raw/ },
+        generator: {
+          filename: 'assets/images/[path][name][ext]',
+        },
       },
       {
-        test: /\.(woff(2)?|eot|ttf|otf|svg)$/,
-        type: 'asset/inline',
+        test: /\.(woff2)$/,
+        type: 'asset/resource',
+        resourceQuery: { not: /raw/ },
+        generator: {
+          filename: 'assets/fonts/[name][ext]',
+        },
       },
     ],
   },
